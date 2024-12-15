@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles del Auto</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Detalles del Auto</h1>
+
+    <!-- Mostrar mensaje de error -->
+    <div th:if="${error}" class="alert alert-danger">
+        <p th:text="${error}"></p>
+    </div>
+
+    <!-- Mostrar detalles del auto -->
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <td th:text="${carDetail.carId}"></td>
+        </tr>
+        <tr>
+            <th>Marca</th>
+            <td th:text="${carDetail.make}"></td>
+        </tr>
+        <tr>
+            <th>Modelo</th>
+            <td th:text="${carDetail.model}"></td>
+        </tr>
+        <tr>
+            <th>Año</th>
+            <td th:text="${carDetail.year}"></td>
+        </tr>
+        <tr>
+            <th>VIN</th>
+            <td th:text="${carDetail.vin}"></td>
+        </tr>
+        <tr>
+            <th>Kilometraje</th>
+            <td th:text="${carDetail.mileage}"></td>
+        </tr>
+        <tr>
+            <th>Tipo de Motor</th>
+            <td th:text="${carDetail.engineType}"></td>
+        </tr>
+        <tr>
+            <th>Compañía de Seguro</th>
+            <td th:text="${carDetail.insuranceCompany}"></td>
+        </tr>
+        <tr>
+            <th>Fecha de Vencimiento de Registro</th>
+            <td th:text="${carDetail.registrationExpirationDate}"></td>
+        </tr>
+        <tr>
+            <th>Fecha de Servicio</th>
+            <td th:text="${carDetail.serviceDueDate}"></td>
+        </tr>
+    </table>
+
+    <a href="/manage/all" class="btn btn-primary">Volver al listado</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Nuevo Auto</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .form-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="form-container">
+        <h1 class="text-center">Crear Nuevo Auto</h1>
+
+<!--        &lt;!&ndash; Mostrar mensaje de error o éxito &ndash;&gt;-->
+<!--        <div th:if="${message}" class="alert alert-success">-->
+<!--            <p th:text="${message}"></p>-->
+<!--        </div>-->
+<!--        <div th:if="${error}" class="alert alert-danger">-->
+<!--            <p th:text="${error}"></p>-->
+<!--        </div>-->
+
+        <!-- Formulario para crear un nuevo auto -->
+        <form th:action="@{/manage/create}" th:object="${car}" method="post">
+            <div class="form-group">
+                <label for="make">Marca</label>
+                <input type="text" id="make" th:field="*{make}" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="model">Modelo</label>
+                <input type="text" id="model" th:field="*{model}" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="year">Año</label>
+                <input type="number" id="year" th:field="*{year}" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="vin">VIN</label>
+                <input type="text" id="vin" th:field="*{vin}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="mileage">Kilometraje</label>
+                <input type="number" id="mileage" th:field="*{mileage}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="engineType">Tipo de Motor</label>
+                <input type="text" id="engineType" th:field="*{engineType}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="insuranceCompany">Compañía de Seguro</label>
+                <input type="text" id="insuranceCompany" th:field="*{insuranceCompany}" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-success">Crear Auto</button>
+            <a href="/manage/all" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>

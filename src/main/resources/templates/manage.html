@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title != null ? title : 'Gestión de Autos'}">Gestión de Autos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Gestión de Autos</h1>
+
+    <!-- Mostrar mensajes de éxito o error -->
+    <div th:if="${message}" class="alert alert-success">
+        <p th:text="${message}"></p>
+    </div>
+    <div th:if="${error}" class="alert alert-danger">
+        <p th:text="${error}"></p>
+    </div>
+
+    <a href="/manage/create" class="btn btn-primary mb-3">Crear Nuevo Auto</a>
+
+    <!-- Lista de autos -->
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Año</th>
+                <th>VIN</th>
+                <th>Kilometraje</th>
+                <th>Tipo de Motor</th>
+                <th>Compañia de seguro</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="car : ${cars}">
+                <td th:text="${car.carId}"></td>
+                <td th:text="${car.make}"></td>
+                <td th:text="${car.model}"></td>
+                <td th:text="${car.year()}"></td>
+                <td th:text="${car.vin()}"></td>
+                <td th:text="${car.mileage()}"></td>
+                <td th:text="${car.engineType()}"></td>
+                <td th:text="${car.insuranceCompany()}"></td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a th:href="@{/manage/detail/{id}(id=${car.carId})}" class="btn btn-info btn-sm mr-2">Detalles</a>
+                        <a th:href="@{/manage/update/{id}(id=${car.carId})}" class="btn btn-warning btn-sm mr-2">Actualizar</a>
+                        <a th:href="@{/manage/delete/{id}(id=${car.carId})}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
